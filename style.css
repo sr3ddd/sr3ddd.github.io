@@ -1,0 +1,90 @@
+:root {
+	--color: transparent;
+	--background: transparent;
+	--border: 2px;
+	--radius: 6px;
+	--margin: 2rem;
+	--scrollbar: 8px;
+}
+* {
+	color: var(--color);
+	font-size: 16px;
+	-webkit-text-size-adjust: 100%;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body {
+	background: var(--background);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height: 100vh;
+}
+/* menu bar */
+#menu {
+	width: fit-content;
+	text-align: center;
+}
+#title {
+	font-size: 200%;
+	margin: 0;
+	margin-top: var(--margin);
+}
+/* game list */
+#list {
+	width: calc(30em + var(--scrollbar));
+	text-align: center;
+	overflow-y: auto;
+	flex-grow: 1;
+	border: var(--border) solid var(--color);
+	border-radius: var(--radius);
+	margin-bottom: var(--margin);
+}
+#list::-webkit-scrollbar {
+	width: var(--scrollbar);
+}
+#list::-webkit-scrollbar-track {
+	background: transparent;
+}
+#list::-webkit-scrollbar-thumb {
+	background: var(--color);
+	border: var(--border) solid var(--color);
+	border-right: none;
+	border-top-left-radius: var(--radius);
+	border-bottom-left-radius: var(--radius);
+}
+#list::-webkit-scrollbar-thumb:hover {
+	background: transparent;
+}
+/* games */
+a {
+	text-decoration: underline;
+}
+a:hover {
+	text-decoration: none;
+}
+.game {
+	width: fit-content;
+	display: block;
+	margin: calc(var(--margin) / 2);
+	margin-left: auto;
+	margin-right: auto;
+}
+/* search */
+#search {
+	outline: none;
+	border: var(--border) solid var(--color);
+	border-radius: var(--radius);
+	padding: 0.2em;
+	padding-left: 0.4em;
+	padding-right: 0.4em;
+	box-sizing: border-box;
+	margin: var(--margin);
+	background: transparent;
+	vertical-align: top;
+	width: 30em;
+}
+#search::placeholder {
+	color: var(--color);
+}
