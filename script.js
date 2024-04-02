@@ -18,7 +18,7 @@ function updateList() {
 	for(let key in GAME_LISTS) {
 		for(let el of GAME_LISTS[key]) {
 			if(searchFilter(el[1]))
-				 formattedList.push(`<a class="game" href="/${key}/${el[0]}">${key+' / '+el[1]}</a>`);
+				 formattedList.push(`<a class="game" target="_blank" rel="noopener noreferrer" href="/${key}/${el[0]}">${key+' / '+el[1]}</a>`);
 		}
 	}
 	$('#list').html(formattedList.join('') || '<p class="game">No results</p>')
