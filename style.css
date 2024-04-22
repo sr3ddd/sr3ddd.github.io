@@ -5,6 +5,7 @@
 	--radius: 6px;
 	--margin: 2rem;
 	--scrollbar: 8px;
+	--width: 30em;
 }
 * {
 	color: var(--color);
@@ -33,7 +34,8 @@ body {
 }
 /* game list */
 #list {
-	width: calc(30em + var(--scrollbar));
+	width: var(--width);
+	max-width: 90vw;
 	text-align: center;
 	overflow-y: auto;
 	flex-grow: 1;
@@ -83,7 +85,8 @@ a:hover {
 	margin: var(--margin);
 	background: transparent;
 	vertical-align: top;
-	width: 30em;
+	width: var(--width);
+	max-width: 90vw;
 }
 #search::placeholder {
 	color: var(--color);
