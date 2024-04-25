@@ -27,10 +27,14 @@ function updateList() {
 updateList();
 
 // search controller
-$('#search').on('input paste', function() {
-	updateList();
-});
+$('#search').on('input paste', updateList);
 function searchFilter(title) {
 	const QUERY = $('#search').val();
 	return !QUERY || title.toLowerCase().includes(QUERY.toLowerCase());
 }
+
+// clear search bar unfocus
+$(window).blur(function() {
+	$('#search').val('');
+	updateList();
+});
