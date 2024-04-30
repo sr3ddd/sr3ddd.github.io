@@ -1,13 +1,15 @@
-// font controller
+// appearance controller
 const FONTS = ['Roboto','Fjord One','Montserrat','Inconsolata','Kufam','Oswald','Reem Kufi Fun','Ubuntu','Playfair Display','Lora','Ms Madi','Dancing Script','Anton','Varela Round','Fjalla One','Exo 2','Pacifico','Black Han Sans','Source Code Pro','Indie Flower','Caveat','Jost','Rajdhani','Zilla Slab','Tiro Bangla','Cormorant Garamond','Signika','Permanent Marker','Acme','Bree Serif','Solway','Cinzel','Archivo Black','DM Serif Display','Kalam','Crete Round','Noto Sans Display','Courgette','Volkhov','Orbitron','Antic Slab','Prata','Space Mono','Imprima','Spectral','Sora','Alata','Cantarell','Sen','Hammersmith One'];
-const FONT = FONTS[parseInt(Math.random() * FONTS.length)];
-$('head').append(`<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=${FONT}">`);
-$('*').css('font-family', FONT);
+function updateAppearance() {
+	const FONT = FONTS[parseInt(Math.random() * FONTS.length)];
+	$('#font').attr('href', 'https://fonts.googleapis.com/css?family='+FONT);
+	$('body > *').css('font-family', FONT);
 
-// color controller
-const color = (1<<24) * Math.random() | 0;
-$(':root').css('--color', 0.2126 * ((color >> 16) & 0xff) + 0.7152 * ((color >>  8) & 0xff) + 0.0722 * ((color >>  0) & 0xff) < 128 ? 'white' : 'black');
-$(':root').css('--background', '#'+(color.toString(16).padStart(6, '0')));
+	const color = (1<<24) * Math.random() | 0;
+	$(':root').css('--color', 0.2126 * ((color >> 16) & 0xff) + 0.7152 * ((color >>  8) & 0xff) + 0.0722 * ((color >>  0) & 0xff) < 128 ? 'white' : 'black');
+	$(':root').css('--background', '#'+(color.toString(16).padStart(6, '0')));
+}
+updateAppearance();
 
 // game list controller
 const GAME_LISTS = {
@@ -33,8 +35,10 @@ function searchFilter(title) {
 	return !QUERY || title.toLowerCase().includes(QUERY.toLowerCase());
 }
 
-// clear search bar unfocus
-$(window).blur(function() {
+// clear search bar and change style on unfocus
+$(window).on('visibilitychange', function() {
+	updateAppearance();
+	
 	$('#search').val('');
 	updateList();
 });
